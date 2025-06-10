@@ -38,12 +38,14 @@ public class ObjectThrower : MonoBehaviour
                 force = forceMax;
                 forceSpeed *= -1;
             }
+            forceIndicator.fillAmount = force / forceMax;
         }
         else if (Input.GetMouseButtonUp(1))
         {
             GameObject temp = Instantiate(objects[selected].obj, transform.position + transform.forward * distance, transform.rotation);
             temp.GetComponent<Rigidbody>().AddForce(transform.forward * force, ForceMode.VelocityChange);
             force = forceMin;
+            forceIndicator.fillAmount = 0;
         }
         else
         {
